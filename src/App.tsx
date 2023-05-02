@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
@@ -26,7 +25,7 @@ function App() {
         })
       });
 
-      if (resp.status == 200) {
+      if (resp.status === 200) {
         const blob = await resp.blob();
         const url = URL.createObjectURL(blob);
         console.log(url);
@@ -50,8 +49,8 @@ function App() {
       <input value={sourceUrl} onChange={e => setSourceUrl(e.target.value)}></input>
       <button onClick={removeBackground}>{ isWorking ? "Removing background" : "Remove background"}</button>
       <div style={{marginTop: "12px"}}>
-        <img src={sourceUrl} width="300px" style={{border: "2px solid black"}}/>
-        { resultImageUrl && <img src={resultImageUrl} width="300px" style={{border: "2px solid black"}}/>}
+        <img alt="Source image" src={sourceUrl} width="300px" style={{border: "2px solid black"}}/>
+        { resultImageUrl && <img alt="Image with background removed" src={resultImageUrl} width="300px" style={{border: "2px solid black"}}/>}
       </div>
       { error && <p>Error: {error}</p>}
     </div>
