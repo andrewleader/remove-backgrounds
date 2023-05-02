@@ -3,6 +3,7 @@ import './App.css';
 
 function App() {
 
+  const [endpoint, setEndpoint] = useState("https://aifabricvisiontests.cognitiveservices.azure.com/");
   const [key, setKey] = useState("");
   const [sourceUrl, setSourceUrl] = useState("https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/gldn-Content-Card-MicrosoftProductExperts?wid=404&hei=228&fit=crop");
   const [isWorking, setIsWorking] = useState(false);
@@ -14,7 +15,7 @@ function App() {
 
     try {
       setError(undefined);
-      var resp = await fetch("https://aifabricvisiontests.cognitiveservices.azure.com/computervision/imageanalysis:segment?api-version=2023-02-01-preview&mode=backgroundRemoval", {
+      var resp = await fetch(endpoint + "computervision/imageanalysis:segment?api-version=2023-02-01-preview&mode=backgroundRemoval", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -43,7 +44,9 @@ function App() {
 
   return (
     <div className="App">
-      <p>Azure Subscription Key</p>
+      <p>Endpoint URL (replace with your own Azure Computer Vision endpoint)</p>
+      <input value={endpoint} onChange={e => setEndpoint(e.target.value)}></input>
+      <p>Cognitive Services Key</p>
       <input type="password" value={key} onChange={e => setKey(e.target.value)}></input>
       <p>Input image URL (web url)</p>
       <input value={sourceUrl} onChange={e => setSourceUrl(e.target.value)}></input>
