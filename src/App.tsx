@@ -49,8 +49,8 @@ function App() {
       <input value={sourceUrl} onChange={e => setSourceUrl(e.target.value)}></input>
       <button onClick={removeBackground}>{ isWorking ? "Removing background" : "Remove background"}</button>
       <div style={{marginTop: "12px"}}>
-        <img alt="Source image" src={sourceUrl} width="300px" style={{border: "2px solid black"}}/>
-        { resultImageUrl && <img alt="Image with background removed" src={resultImageUrl} width="300px" style={{border: "2px solid black"}}/>}
+        <img alt="Source" src={sourceUrl} width="300px" style={{border: "2px solid black"}}/>
+        { resultImageUrl && <img alt="Background removed" src={resultImageUrl} width="300px" style={{border: "2px solid black"}}/>}
       </div>
       { error && <p>Error: {error}</p>}
     </div>
